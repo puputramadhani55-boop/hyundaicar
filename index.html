@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Hyundai Prima Motor — Showroom Resmi Multi Model</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Showroom resmi Hyundai — Creta, Stargazer, Santa Fe, Palisade, Venue, Ioniq 5. Garansi resmi, test drive gratis, simulasi kredit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt:#0c0e12;
+    --asphalt-2:#15181e;
+    --concrete:#e9e7e0;
+    --chrome:#9aa3ad;
+    --signal:#ffb703;
+    --signal-dim:#8a6404;
+    --titanium:#5b7fb0;
+    --line:rgba(233,231,224,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--asphalt);
+    color:var(--concrete);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3,.wordmark,.spec-name,.stat-num{font-family:'Oswald',sans-serif;text-transform:uppercase}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  a{color:inherit}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(12,14,18,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .wordmark{font-size:20px;font-weight:700;letter-spacing:1px;display:flex;align-items:center;gap:10px}
+  .wordmark span{color:var(--signal)}
+  .navlinks{display:flex;gap:32px;font-size:14px;letter-spacing:.5px}
+  .navlinks a{text-decoration:none;color:var(--chrome);transition:color .2s}
+  .navlinks a:hover{color:var(--concrete)}
+  .nav-cta{
+    background:var(--signal);color:var(--asphalt);
+    padding:10px 20px;border-radius:2px;font-weight:600;font-size:14px;
+    text-decoration:none;letter-spacing:.5px;white-space:nowrap;
+  }
+  .burger{display:none;background:none;border:none;color:var(--concrete);font-size:24px;cursor:pointer}
+
+  /* HERO */
+  header.hero{
+    position:relative;
+    padding:110px 0 90px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(255,183,3,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(91,127,176,0.14), transparent 60%),
+      var(--asphalt);
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:linear-gradient(180deg, rgba(0,0,0,0.6), transparent 75%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative;z-index:2}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--signal);font-size:13px;letter-spacing:2px;
+    display:flex;align-items:center;gap:10px;margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--signal)}
+  header.hero h1{
+    font-size:clamp(38px,6vw,68px);
+    font-weight:700;line-height:1.05;
+    max-width:780px;letter-spacing:.5px;
+  }
+  header.hero h1 em{font-style:normal;color:var(--signal)}
+  header.hero p.lead{
+    font-family:'Inter',sans-serif;text-transform:none;
+    color:var(--chrome);font-size:17px;max-width:520px;margin:22px 0 34px;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
+  .btn-primary,.btn-ghost{
+    padding:15px 28px;border-radius:2px;font-weight:600;font-size:14px;
+    text-decoration:none;letter-spacing:.5px;display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-primary{background:var(--signal);color:var(--asphalt)}
+  .btn-primary:hover{background:#ffc633}
+  .btn-ghost{border:1px solid var(--line);color:var(--concrete)}
+  .btn-ghost:hover{border-color:var(--chrome)}
+
+  /* dashboard stat strip */
+  .dash{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--line);border-radius:4px;overflow:hidden;
+  }
+  .dash div{
+    padding:20px 22px;border-right:1px solid var(--line);
+    background:rgba(255,255,255,0.02);
+  }
+  .dash div:last-child{border-right:none}
+  .stat-num{font-size:30px;font-weight:600;color:var(--concrete);line-height:1}
+  .stat-num span{color:var(--signal);font-size:16px;margin-left:2px}
+  .stat-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--chrome);letter-spacing:1px;margin-top:8px;text-transform:uppercase}
+
+  /* SECTION HEADS */
+  section{padding:90px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:44px;flex-wrap:wrap}
+  .sec-tag{font-family:'JetBrains Mono',monospace;color:var(--signal);font-size:12px;letter-spacing:2px;margin-bottom:10px}
+  .sec-head h2{font-size:clamp(28px,4vw,40px);font-weight:600;letter-spacing:.5px}
+  .sec-head p{font-family:'Inter',sans-serif;text-transform:none;color:var(--chrome);max-width:380px;font-size:15px}
+
+  /* LINEUP - spec ticket cards */
+  .lineup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .ticket{
+    background:var(--asphalt-2);
+    border:1px solid var(--line);
+    border-radius:6px;
+    position:relative;
+    display:flex;flex-direction:column;
+    transition:transform .25s, border-color .25s;
+  }
+  .ticket:hover{transform:translateY(-4px);border-color:var(--signal)}
+  .ticket-top{padding:26px 24px 20px;border-bottom:1px dashed var(--line);position:relative}
+  .ticket-top::before,.ticket-top::after{
+    content:"";position:absolute;bottom:-9px;width:18px;height:18px;
+    background:var(--asphalt);border-radius:50%;
+  }
+  .ticket-top::before{left:-9px}
+  .ticket-top::after{right:-9px}
+  .tag-ev{
+    display:inline-block;background:rgba(255,183,3,0.12);color:var(--signal);
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;
+    padding:4px 8px;border-radius:2px;margin-bottom:12px;
+  }
+  .spec-name{font-size:24px;font-weight:600;letter-spacing:.5px;margin-bottom:6px}
+  .spec-tagline{font-family:'Inter',sans-serif;text-transform:none;color:var(--chrome);font-size:14px}
+  .car-icon{width:100%;height:76px;margin:18px 0 4px}
+  .ticket-body{padding:20px 24px;flex:1;display:flex;flex-direction:column}
+  .spec-rows{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--chrome);display:grid;gap:8px;margin-bottom:20px}
+  .spec-rows div{display:flex;justify-content:space-between;border-bottom:1px dotted var(--line);padding-bottom:8px}
+  .spec-rows div b{color:var(--concrete);font-weight:500}
+  .price-row{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px}
+  .price-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--chrome);letter-spacing:1px}
+  .price-val{font-size:22px;font-weight:600;color:var(--signal)}
+  .ticket-cta{
+    display:block;text-align:center;background:transparent;
+    border:1px solid var(--titanium);color:var(--concrete);
+    padding:13px;border-radius:2px;text-decoration:none;font-weight:600;font-size:13px;
+    letter-spacing:.5px;transition:background .2s;
+  }
+  .ticket-cta:hover{background:var(--titanium)}
+
+  /* FEATURES */
+  .feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .feat{background:var(--asphalt);padding:32px 26px}
+  .feat .num{font-family:'JetBrains Mono',monospace;color:var(--signal);font-size:12px;margin-bottom:16px}
+  .feat h3{font-size:17px;font-weight:600;text-transform:none;margin-bottom:8px;letter-spacing:.3px}
+  .feat p{font-family:'Inter',sans-serif;text-transform:none;color:var(--chrome);font-size:13.5px}
+
+  /* FINANCING */
+  .finance{
+    background:var(--asphalt-2);border:1px solid var(--line);border-radius:6px;
+    padding:48px;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;
+  }
+  .finance h2{font-size:28px;font-weight:600;margin-bottom:14px}
+  .finance p{font-family:'Inter',sans-serif;text-transform:none;color:var(--chrome);font-size:15px;margin-bottom:26px;max-width:420px}
+  .finance-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .finance-item{border:1px solid var(--line);border-radius:4px;padding:18px}
+  .finance-item .v{font-size:26px;font-weight:600;color:var(--signal);font-family:'Oswald',sans-serif}
+  .finance-item .l{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--chrome);letter-spacing:1px;margin-top:6px}
+
+  /* TESTIMONI */
+  .logbook{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .log-entry{border:1px solid var(--line);border-radius:6px;padding:26px;background:var(--asphalt-2)}
+  .log-entry .stars{color:var(--signal);letter-spacing:2px;margin-bottom:14px;font-size:14px}
+  .log-entry p.quote{font-family:'Inter',sans-serif;text-transform:none;font-size:14.5px;color:var(--concrete);margin-bottom:18px}
+  .log-entry .who{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--chrome);border-top:1px dotted var(--line);padding-top:14px}
+
+  /* CTA BAND */
+  .band{
+    background:linear-gradient(135deg,#12151b,#1a2233);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:64px 0;text-align:center;
+  }
+  .band h2{font-size:clamp(26px,4vw,38px);font-weight:600;margin-bottom:14px}
+  .band p{font-family:'Inter',sans-serif;text-transform:none;color:var(--chrome);margin-bottom:30px;font-size:15px}
+
+  /* FOOTER */
+  footer{padding:50px 0 30px}
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;border-bottom:1px solid var(--line);padding-bottom:36px;margin-bottom:22px}
+  footer .wordmark{margin-bottom:12px}
+  footer .col p, footer .col a{font-family:'Inter',sans-serif;text-transform:none;color:var(--chrome);font-size:13.5px;text-decoration:none;display:block;margin-bottom:8px}
+  footer .col h4{font-size:12px;letter-spacing:1.5px;color:var(--chrome);margin-bottom:14px;font-family:'JetBrains Mono',monospace;font-weight:400}
+  .bottom-line{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--chrome)}
+
+  /* WA FLOAT */
+  .wa-float{
+    position:fixed;bottom:22px;right:22px;z-index:60;
+    background:#25D366;color:#0c0e12;width:58px;height:58px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;text-decoration:none;
+    box-shadow:0 6px 20px rgba(0,0,0,0.4);
+  }
+  .wa-float svg{width:28px;height:28px}
+
+  @media(max-width:900px){
+    .navlinks{display:none}
+    .lineup-grid{grid-template-columns:repeat(2,1fr)}
+    .feat-grid{grid-template-columns:repeat(2,1fr)}
+    .finance{grid-template-columns:1fr}
+    .logbook{grid-template-columns:1fr}
+    .dash{grid-template-columns:repeat(2,1fr)}
+    .dash div:nth-child(2){border-right:none}
+  }
+  @media(max-width:560px){
+    .lineup-grid{grid-template-columns:1fr}
+    .feat-grid{grid-template-columns:1fr}
+    .footer-grid{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="wordmark">HYUNDAI <span>PRIMA</span> MOTOR</div>
+    <div class="navlinks">
+      <a href="#lineup">Lineup</a>
+      <a href="#kenapa">Kenapa Kami</a>
+      <a href="#kredit">Simulasi Kredit</a>
+      <a href="#testimoni">Testimoni</a>
+    </div>
+    <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya-tanya%20mobil%20Hyundai" class="nav-cta">Chat Admin</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">SHOWROOM RESMI HYUNDAI</div>
+    <h1>Temukan Hyundai<br>yang <em>pas</em> untuk<br>perjalananmu.</h1>
+    <p class="lead">Dari kota padat sampai jalan luar kota — lineup lengkap Hyundai dengan garansi resmi, test drive gratis, dan simulasi kredit yang jelas dari awal.</p>
+    <div class="hero-ctas">
+      <a href="#lineup" class="btn-primary">Lihat Lineup Mobil →</a>
+      <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya-tanya%20mobil%20Hyundai" class="btn-ghost">Chat Admin WA</a>
+    </div>
+    <div class="dash">
+      <div><div class="stat-num">6<span>model</span></div><div class="stat-label">Lineup Tersedia</div></div>
+      <div><div class="stat-num">5<span>thn</span></div><div class="stat-label">Garansi Resmi</div></div>
+      <div><div class="stat-num">10<span>%</span></div><div class="stat-label">DP Mulai Dari</div></div>
+      <div><div class="stat-num">150<span>+</span></div><div class="stat-label">Cabang Servis</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="lineup">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-tag">// LINEUP</div>
+        <h2>Pilih Model Kamu</h2>
+      </div>
+      <p>Setiap unit dilengkapi window sticker digital — spek lengkap, tanpa biaya tersembunyi.</p>
+    </div>
+    <div class="lineup-grid">
+
+      <div class="ticket">
+        <div class="ticket-top">
+          <div class="spec-name">Hyundai Creta</div>
+          <div class="spec-tagline">Compact SUV, city-ready</div>
+          <svg class="car-icon" viewBox="0 0 200 60" fill="none"><path d="M10 42h4c2-10 10-17 20-17h20l14-14h56l16 14h20c8 0 14 7 16 17h4v10H10V42z" stroke="#5b7fb0" stroke-width="2"/><circle cx="52" cy="46" r="8" stroke="#ffb703" stroke-width="2"/><circle cx="148" cy="46" r="8" stroke="#ffb703" stroke-width="2"/></svg>
+        </div>
+        <div class="ticket-body">
+          <div class="spec-rows">
+            <div><span>Mesin</span><b>1.5L NA / Turbo</b></div>
+            <div><span>Transmisi</span><b>iVT / IMT</b></div>
+            <div><span>Kapasitas</span><b>5 Penumpang</b></div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-label">MULAI DARI</div><div class="price-val">Rp 289 Jt</div></div>
+          </div>
+          <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20harga%20%26%20test%20drive%20Hyundai%20Creta" class="ticket-cta">Tanya Harga & Test Drive</a>
+        </div>
+      </div>
+
+      <div class="ticket">
+        <div class="ticket-top">
+          <div class="spec-name">Hyundai Stargazer</div>
+          <div class="spec-tagline">MPV keluarga, lega & efisien</div>
+          <svg class="car-icon" viewBox="0 0 200 60" fill="none"><path d="M8 42h4c2-11 9-19 20-19h100c11 0 18 8 20 19h4v10H8V42z" stroke="#5b7fb0" stroke-width="2"/><circle cx="50" cy="46" r="8" stroke="#ffb703" stroke-width="2"/><circle cx="150" cy="46" r="8" stroke="#ffb703" stroke-width="2"/></svg>
+        </div>
+        <div class="ticket-body">
+          <div class="spec-rows">
+            <div><span>Mesin</span><b>1.5L Smartstream</b></div>
+            <div><span>Transmisi</span><b>iVT</b></div>
+            <div><span>Kapasitas</span><b>7 Penumpang</b></div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-label">MULAI DARI</div><div class="price-val">Rp 254 Jt</div></div>
+          </div>
+          <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20harga%20%26%20test%20drive%20Hyundai%20Stargazer" class="ticket-cta">Tanya Harga & Test Drive</a>
+        </div>
+      </div>
+
+      <div class="ticket">
+        <div class="ticket-top">
+          <span class="tag-ev">FULL ELECTRIC</span>
+          <div class="spec-name">Hyundai Ioniq 5</div>
+          <div class="spec-tagline">EV masa depan, hari ini</div>
+          <svg class="car-icon" viewBox="0 0 200 60" fill="none"><path d="M10 42h4c2-9 9-16 19-16h20l16-12h52l18 12h20c8 0 13 7 15 16h4v10H10V42z" stroke="#ffb703" stroke-width="2"/><circle cx="52" cy="46" r="8" stroke="#ffb703" stroke-width="2"/><circle cx="148" cy="46" r="8" stroke="#ffb703" stroke-width="2"/></svg>
+        </div>
+        <div class="ticket-body">
+          <div class="spec-rows">
+            <div><span>Baterai</span><b>72.6 kWh</b></div>
+            <div><span>Jarak Tempuh</span><b>±480 km</b></div>
+            <div><span>Kapasitas</span><b>5 Penumpang</b></div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-label">MULAI DARI</div><div class="price-val">Rp 748 Jt</div></div>
+          </div>
+          <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20harga%20%26%20test%20drive%20Hyundai%20Ioniq%205" class="ticket-cta">Tanya Harga & Test Drive</a>
+        </div>
+      </div>
+
+      <div class="ticket">
+        <div class="ticket-top">
+          <div class="spec-name">Hyundai Santa Fe</div>
+          <div class="spec-tagline">SUV premium, tenaga besar</div>
+          <svg class="car-icon" viewBox="0 0 200 60" fill="none"><path d="M8 42h4c2-11 9-19 20-19h20l16-13h44l18 13h20c9 0 15 8 17 19h4v10H8V42z" stroke="#5b7fb0" stroke-width="2"/><circle cx="50" cy="46" r="8" stroke="#ffb703" stroke-width="2"/><circle cx="150" cy="46" r="8" stroke="#ffb703" stroke-width="2"/></svg>
+        </div>
+        <div class="ticket-body">
+          <div class="spec-rows">
+            <div><span>Mesin</span><b>2.5L Turbo / Hybrid</b></div>
+            <div><span>Transmisi</span><b>8-Speed AT</b></div>
+            <div><span>Kapasitas</span><b>6/7 Penumpang</b></div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-label">MULAI DARI</div><div class="price-val">Rp 659 Jt</div></div>
+          </div>
+          <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20harga%20%26%20test%20drive%20Hyundai%20Santa%20Fe" class="ticket-cta">Tanya Harga & Test Drive</a>
+        </div>
+      </div>
+
+      <div class="ticket">
+        <div class="ticket-top">
+          <div class="spec-name">Hyundai Palisade</div>
+          <div class="spec-tagline">Flagship SUV, kabin mewah</div>
+          <svg class="car-icon" viewBox="0 0 200 60" fill="none"><path d="M6 42h4c2-12 9-20 21-20h18l17-13h48l19 13h18c10 0 16 8 18 20h4v10H6V42z" stroke="#5b7fb0" stroke-width="2"/><circle cx="48" cy="46" r="8" stroke="#ffb703" stroke-width="2"/><circle cx="152" cy="46" r="8" stroke="#ffb703" stroke-width="2"/></svg>
+        </div>
+        <div class="ticket-body">
+          <div class="spec-rows">
+            <div><span>Mesin</span><b>3.5L V6 / Diesel</b></div>
+            <div><span>Transmisi</span><b>8-Speed AT</b></div>
+            <div><span>Kapasitas</span><b>7/8 Penumpang</b></div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-label">MULAI DARI</div><div class="price-val">Rp 908 Jt</div></div>
+          </div>
+          <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20harga%20%26%20test%20drive%20Hyundai%20Palisade" class="ticket-cta">Tanya Harga & Test Drive</a>
+        </div>
+      </div>
+
+      <div class="ticket">
+        <div class="ticket-top">
+          <div class="spec-name">Hyundai Venue</div>
+          <div class="spec-tagline">Sub-compact, lincah di kota</div>
+          <svg class="car-icon" viewBox="0 0 200 60" fill="none"><path d="M14 42h4c2-9 9-15 18-15h18l13-12h44l14 12h18c8 0 13 6 15 15h4v10H14V42z" stroke="#5b7fb0" stroke-width="2"/><circle cx="54" cy="46" r="8" stroke="#ffb703" stroke-width="2"/><circle cx="144" cy="46" r="8" stroke="#ffb703" stroke-width="2"/></svg>
+        </div>
+        <div class="ticket-body">
+          <div class="spec-rows">
+            <div><span>Mesin</span><b>1.2L / 1.0L Turbo</b></div>
+            <div><span>Transmisi</span><b>Manual / iVT</b></div>
+            <div><span>Kapasitas</span><b>5 Penumpang</b></div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-label">MULAI DARI</div><div class="price-val">Rp 232 Jt</div></div>
+          </div>
+          <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20harga%20%26%20test%20drive%20Hyundai%20Venue" class="ticket-cta">Tanya Harga & Test Drive</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="kenapa">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-tag">// KEUNGGULAN</div>
+        <h2>Kenapa Beli di Sini</h2>
+      </div>
+      <p>Bukan cuma jual unit — kami temani dari pilih model sampai purna jual.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="num">01</div><h3>Garansi Resmi</h3><p>5 tahun atau 150.000 km, berlaku di seluruh jaringan bengkel resmi Hyundai.</p></div>
+      <div class="feat"><div class="num">02</div><h3>Test Drive Gratis</h3><p>Kami antar unit ke lokasi kamu untuk test drive, tanpa biaya dan tanpa paksaan beli.</p></div>
+      <div class="feat"><div class="num">03</div><h3>Simulasi Kredit Jelas</h3><p>Rincian DP, tenor, dan cicilan dihitung transparan sebelum kamu tanda tangan apapun.</p></div>
+      <div class="feat"><div class="num">04</div><h3>Trade-In Mobil Lama</h3><p>Tukar tambah mobil lama dengan penilaian langsung di tempat, proses cepat.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="kredit">
+  <div class="wrap">
+    <div class="finance">
+      <div>
+        <div class="sec-tag">// SIMULASI KREDIT</div>
+        <h2>Hitung Cicilan Sebelum Datang</h2>
+        <p>Kirim model yang kamu incar dan DP yang kamu punya lewat WhatsApp — admin kami hitungkan simulasi cicilan dalam beberapa menit, tanpa perlu ke showroom dulu.</p>
+        <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20simulasi%20kredit%20mobil%20Hyundai" class="btn-primary">Minta Simulasi via WA →</a>
+      </div>
+      <div class="finance-grid">
+        <div class="finance-item"><div class="v">10%</div><div class="l">DP MINIMAL</div></div>
+        <div class="finance-item"><div class="v">1–7</div><div class="l">TENOR (TAHUN)</div></div>
+        <div class="finance-item"><div class="v">24 JAM</div><div class="l">PROSES APPROVAL</div></div>
+        <div class="finance-item"><div class="v">3 BANK</div><div class="l">MITRA LEASING</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimoni">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-tag">// LOGBOOK PELANGGAN</div>
+        <h2>Kata Mereka</h2>
+      </div>
+    </div>
+    <div class="logbook">
+      <div class="log-entry">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Proses dari lihat unit sampai unit sampai rumah cuma 5 hari. Admin responsif, nggak pernah dikejar-kejar buat DP."</p>
+        <div class="who">RIZKY A. — Hyundai Creta, Bandung</div>
+      </div>
+      <div class="log-entry">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Simulasi kreditnya jujur dari awal, nggak ada biaya nyelip pas tanda tangan kontrak. Sangat direkomendasikan."</p>
+        <div class="who">DEWI S. — Hyundai Stargazer, Jakarta</div>
+      </div>
+      <div class="log-entry">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Test drive diantar ke kantor, jadi bisa coba tanpa ganggu jam kerja. Ioniq 5-nya juga lebih halus dari ekspektasi."</p>
+        <div class="who">ANDRE P. — Hyundai Ioniq 5, Bekasi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap">
+    <h2>Siap Test Drive Hyundai Pilihanmu?</h2>
+    <p>Chat admin sekarang, sebutkan model dan lokasi kamu — kami jadwalkan test drive.</p>
+    <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20jadwalkan%20test%20drive%20mobil%20Hyundai" class="btn-primary">Chat Admin WhatsApp →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="col">
+        <div class="wordmark">HYUNDAI <span style="color:var(--signal)">PRIMA</span> MOTOR</div>
+        <p style="max-width:260px">Showroom resmi Hyundai — melayani pembelian, trade-in, dan servis di seluruh wilayah.</p>
+      </div>
+      <div class="col">
+        <h4>SHOWROOM</h4>
+        <p>Jl. Contoh Raya No. 88, Bandung</p>
+        <p>Buka Senin–Minggu, 08.00–20.00</p>
+      </div>
+      <div class="col">
+        <h4>KONTAK</h4>
+        <a href="https://wa.me/6281234567890">WhatsApp Admin</a>
+        <a href="#">IG: @hyundaiprimamotor</a>
+      </div>
+      <div class="col">
+        <h4>NAVIGASI</h4>
+        <a href="#lineup">Lineup Mobil</a>
+        <a href="#kredit">Simulasi Kredit</a>
+        <a href="#testimoni">Testimoni</a>
+      </div>
+    </div>
+    <div class="bottom-line">
+      <span>© 2026 HYUNDAI PRIMA MOTOR — DEALER RESMI</span>
+      <span>DIBUAT UNTUK TUJUAN PROMOSI SHOWROOM</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya-tanya%20mobil%20Hyundai" aria-label="Chat WhatsApp Admin">
+  <svg viewBox="0 0 32 32" fill="#0c0e12"><path d="M16 2C8.3 2 2 8.3 2 16c0 2.6.7 5 1.9 7.2L2 30l7-1.8C11.1 29.4 13.5 30 16 30c7.7 0 14-6.3 14-14S23.7 2 16 2zm0 25.5c-2.2 0-4.3-.6-6.1-1.7l-.4-.3-4.2 1.1 1.1-4.1-.3-.4C4.7 20.2 4 18.2 4 16 4 9.4 9.4 4 16 4s12 5.4 12 12-5.4 11.5-12 11.5zm6.3-8.7c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.4-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-2-1.8-2.3-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.5.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.8-1.9-1.1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.4 3.7 5.9 5.1.8.3 1.4.5 1.9.7.8.2 1.5.2 2 .1.6-.1 2-.8 2.3-1.6.3-.8.3-1.4.2-1.6-.1-.1-.3-.2-.6-.4z"/></svg>
+</a>
+
+</body>
+</html>
